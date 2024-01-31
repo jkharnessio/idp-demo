@@ -64,3 +64,14 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+  steps:
+    # Call Harness Pipelines to create the service infra and other things
+    - id: trigger
+      name: Creating Your Developer Environment
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=6_vVHzo9Qeu9fXvj-AcbCQ&orgIdentifier=SE_Sandbox&projectIdentifier=JKHarnessio&pipelineIdentifier=Provision_Environment&triggerIdentifier=IDP_Trigger'
+
+
+
+
