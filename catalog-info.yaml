@@ -10,7 +10,7 @@ metadata:
     - jkharnessio-demo
 spec:
   owner: julian-maurice.klodzinski@harness.io
-  type: service
+  type: environment
   parameters:
     - title: Developer Environment Details
       required:
