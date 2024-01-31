@@ -1,0 +1,66 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: createdeveloperenvironment
+  title: Create Developer Environment
+  description: Use this Template to provision on demand Developer Environments for your Applications
+  tags:
+    - jkharnessio
+    - harness
+    - jkharnessio-demo
+spec:
+  owner: julian-maurice.klodzinski@harness.io
+  type: service
+  parameters:
+    - title: Developer Environment Details
+      required:
+        - project
+        - techstack
+      properties:
+        project:
+          title: Name of the application or project you need the Developer Environment for
+          type: string
+          description: Unique name of the project
+        techstack:
+          title: Technology Stack
+          type: string
+          ui:field: TechnologyStack
+          ui:options:
+            stack:
+              - Python
+              - Java
+    - title: Environment Infrastructure Details
+      required:
+        - provider
+        - db
+        - cache
+        - lint
+        - owner
+      properties:
+        provider:
+          title: Choose a cloud provider for Deployment
+          type: string
+          enum: ['GCP', 'AWS', "AZURE"]
+          default: GCP
+        db:
+          title: Choose a Database Type for the Service
+          type: string
+          enum: ['None', 'MySQL', 'Postgres', 'MongoDB']
+          default: None
+        cache:
+          title: Choose a caching system for the Service
+          type: string
+          enum: ['None', 'Redis']
+          default: None
+        lint:
+          title: Choose a Python linter for the Service
+          type: string
+          enum: ['None', 'Black', 'Flake8']
+          default: None
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
